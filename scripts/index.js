@@ -29,11 +29,11 @@ function update(dt) {
 	BALL.pos.x += BALL.vel.x * dt;
 	BALL.pos.y += BALL.vel.y * dt;
 
-	if (BALL.pos.x < 0 || BALL.pos.x > CANVAS.width) {
+	if (BALL.left < 0 || BALL.right > CANVAS.width) {
 		BALL.vel.x = -BALL.vel.x;
 	}
 
-	if (BALL.pos.y < 0 || BALL.pos.y > CANVAS.height) {
+	if (BALL.top < 0 || BALL.bottom > CANVAS.height) {
 		BALL.vel.y = -BALL.vel.y;
 	}
 
