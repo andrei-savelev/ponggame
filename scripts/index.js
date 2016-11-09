@@ -5,3 +5,7 @@ import Pong from './Pong';
 const CANVAS = document.getElementById('pong');
 const PONG = new Pong(CANVAS);
 
+CANVAS.addEventListener('mousemove', oEvent => {
+	PONG.players[0].pos.y = oEvent.offsetY;
+});
+
