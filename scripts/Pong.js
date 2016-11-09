@@ -24,12 +24,6 @@ export default class Pong {
 		this._CONTEXT = this._CANVAS.getContext('2d');
 		
 		this.BALL = new Ball();
-		
-		this.BALL.pos.x = 100;
-		this.BALL.pos.y = 50;
-
-		this.BALL.vel.x = 100;
-		this.BALL.vel.y = 100;
 
 		this.players = [
 			new Player(),
@@ -43,6 +37,8 @@ export default class Pong {
 		});
 
 		CALLBACK();
+
+		this.reset();
 	}
 
 	/**
@@ -79,16 +75,30 @@ export default class Pong {
 		}
 	}
 
+	reset() {
+		this.BALL.pos.x = 100;
+		this.BALL.pos.y = 50;
+
+		this.BALL.vel.x = 100;
+		this.BALL.vel.y = 100;
+	}
+
 	/**
 	* @public
 	* @param {number} dt - date time
 	*/
 	update(dt) {
+		let playerId = null;
+
 		this.BALL.pos.x += this.BALL.vel.x * dt;
 		this.BALL.pos.y += this.BALL.vel.y * dt;
 
 		if (this.BALL.left < 0 || this.BALL.right > this._CANVAS.width) {
-			this.BALL.vel.x = -this.BALL.vel.x;
+			playerId = this.BALL.vel.x > 0 | 0;
+
+			this.players[playerId].score++;
+
+			this.reset();
 		}
 
 		if (this.BALL.top < 0 || this.BALL.bottom > this._CANVAS.height) {
