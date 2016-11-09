@@ -34,6 +34,31 @@ export default class Pong {
 	}
 
 	/**
+	* @publuc
+	* @param {object} rect
+	*/
+	drowRect(rect) {
+		this._CONTEXT.fillStyle = '#fff';
+		this._CONTEXT.fillRect(
+			rect.pos.x, 
+			rect.pos.y, 
+			rect.size.x, 
+			rect.size.y
+		);
+	}
+
+	/**
+	* @public
+	*/
+
+	drow() {
+		this._CONTEXT.fillStyle = '#000';
+		this._CONTEXT.fillRect(0, 0, this._CANVAS.width, this._CANVAS.height);
+
+		this.drowRect(this.BALL);
+	}
+
+	/**
 	* @public
 	* @param {number} dt - date time
 	*/
@@ -49,10 +74,7 @@ export default class Pong {
 			this.BALL.vel.y = -this.BALL.vel.y;
 		}
 
-		this._CONTEXT.fillStyle = '#000';
-		this._CONTEXT.fillRect(0, 0, this._CANVAS.width, this._CANVAS.height);
+		this.drow();
 
-		this._CONTEXT.fillStyle = '#fff';
-		this._CONTEXT.fillRect(this.BALL.pos.x, this.BALL.pos.y, this.BALL.size.x, this.BALL.size.y);
 	}
 }
