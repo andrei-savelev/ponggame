@@ -76,11 +76,11 @@ export default class Pong {
 	}
 
 	reset() {
-		this.BALL.pos.x = 100;
-		this.BALL.pos.y = 50;
+		this.BALL.pos.x = this._CANVAS.width / 2;
+		this.BALL.pos.y = this._CANVAS.height / 2;
 
-		this.BALL.vel.x = 100;
-		this.BALL.vel.y = 100;
+		this.BALL.vel.x = 0;
+		this.BALL.vel.y = 0;
 	}
 
 	/**
