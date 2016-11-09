@@ -88,6 +88,8 @@ export default class Pong {
 			this.BALL.vel.y = -this.BALL.vel.y;
 		}
 
+		this.players[1].pos.y = this.BALL.pos.y;
+
 		this.drow();
 
 	}
