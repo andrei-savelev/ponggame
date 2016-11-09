@@ -72,6 +72,7 @@ export default class Pong {
 		if (player.left < ball.right && player.right > ball.left &&
 			player.top < ball.bottom && player.bottom > ball.top) {
 			ball.vel.x = -ball.vel.x;
+			ball.vel.len *= 1.05;
 		}
 	}
 
@@ -81,6 +82,14 @@ export default class Pong {
 
 		this.BALL.vel.x = 0;
 		this.BALL.vel.y = 0;
+	}
+
+	start() {
+		if (this.BALL.vel.x === 0 && this.BALL.vel.y === 0) {
+			this.BALL.vel.x = 300 * (Math.random() > 0.5 ? 1: -1);
+			this.BALL.vel.y = 300 * (Math.random() * 2 -1);
+			this.BALL.vel.len = 200;
+		}
 	}
 
 	/**
