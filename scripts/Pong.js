@@ -1,4 +1,5 @@
 import Ball from './Ball';
+import Player from './Player';
 
 /**
 * @class
@@ -30,6 +31,17 @@ export default class Pong {
 		this.BALL.vel.x = 100;
 		this.BALL.vel.y = 100;
 
+		this.players = [
+			new Player(),
+			new Player()
+		];
+
+		this.players[0].pos.x = 40;
+		this.players[1].pos.x = this._CANVAS.width - this.players[0].pos.x;
+		this.players.forEach(player => {
+			player.pos.y = this._CANVAS.height / 2;
+		});
+
 		CALLBACK();
 	}
 
@@ -40,8 +52,8 @@ export default class Pong {
 	drowRect(rect) {
 		this._CONTEXT.fillStyle = '#fff';
 		this._CONTEXT.fillRect(
-			rect.pos.x, 
-			rect.pos.y, 
+			rect.left, 
+			rect.top, 
 			rect.size.x, 
 			rect.size.y
 		);
@@ -56,6 +68,8 @@ export default class Pong {
 		this._CONTEXT.fillRect(0, 0, this._CANVAS.width, this._CANVAS.height);
 
 		this.drowRect(this.BALL);
+
+		this.players.forEach(player => this.drowRect(player));
 	}
 
 	/**
