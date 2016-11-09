@@ -72,6 +72,13 @@ export default class Pong {
 		this.players.forEach(player => this.drowRect(player));
 	}
 
+	collide(player, ball) {
+		if (player.left < ball.right && player.right > ball.left &&
+			player.top < ball.bottom && player.bottom > ball.top) {
+			ball.vel.x = -ball.vel.x;
+		}
+	}
+
 	/**
 	* @public
 	* @param {number} dt - date time
@@ -89,6 +96,8 @@ export default class Pong {
 		}
 
 		this.players[1].pos.y = this.BALL.pos.y;
+
+		this.players.forEach(player => this.collide(player, this.BALL));
 
 		this.drow();
 
