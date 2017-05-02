@@ -4,15 +4,7 @@
 
 ```
 npm install
-npm start
-Open http://localhost:5000
-```
-
-### Linting
-
-ESLint with React linting options have been enabled.
-
-```
-npm run lint
+npm run start
+Open http://localhost:8080
 ```
 
